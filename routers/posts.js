@@ -17,7 +17,7 @@ router.post('/',(req,res)=>{
 
 router.put('/:id',(req,res)=>{
     const id = req.params.id;
-    res.send(`Aggiornamento del post ${id}`)
+    res.send(`Aggiornamento completo del post ${id}`)
 })
 
 router.patch('/:id', (req,res)=>{
