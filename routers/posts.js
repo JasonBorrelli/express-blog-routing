@@ -6,4 +6,29 @@ router.get('/',(req,res)=>{
     res.send('Lista di post');
 })
 
+router.get('/:id',(req,res)=>{
+    const id = req.params.id;
+    res.send(`Visualizzo il post ${id}`)
+})
+
+router.post('/',(req,res)=>{
+    res.send(`Creazione di un nuovo post`)
+})
+
+router.put('/:id',(req,res)=>{
+    const id = req.params.id;
+    res.send(`Aggiornamento del post ${id}`)
+})
+
+router.patch('/:id', (req,res)=>{
+    const id = req.params.id;
+    res.send(`Aggiornamento parziale del post ${id}`)
+})
+
+router.delete('/:id',(req,res)=>{
+    const id = req.params.id;
+    res.send(`Eliminazione del post ${id}`)
+})
+
+
 module.exports = router;
