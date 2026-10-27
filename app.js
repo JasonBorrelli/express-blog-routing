@@ -1,5 +1,6 @@
 const express = require('express');
 const postsRouter = require('./routers/posts');
+const notFound = require('./middleware/notFound');
 
 const app = express();
 const port = 3000;
@@ -7,10 +8,12 @@ const port = 3000;
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-    res.send('Server del mio blog!'); 
+    res.send('Server del mio blog!');
 });
 
 app.use('/posts', postsRouter);
+
+app.use(notFound);
 
 app.listen(port, () => {
     console.log(`Server del mio blog in ascolto su http://localhost:${port}`);
