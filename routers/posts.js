@@ -6,13 +6,32 @@ const connection = require('../data/db');
 const router = express.Router();
 
 router.get('/',(req,res)=>{
-    res.send('Lista di post');
-})
+    const sql = 'SELECT * FROM posts'
 
-router.get('/:id',(req,res)=>{
+    connection.query(sql, (err, results)=> {
+        if(err) return next(err);
+
+        res.json(results);
+    });
+
+   /*  res.send('Lista di post'); */
+});
+
+router.get('/:id',(req,res,next)=>{ 
+
     const id = req.params.id;
-    res.send(`Visualizzo il post ${id}`)
-})
+    const sql = `SELECT * FROM posts WHERE id=${id}`;
+   
+
+    connection.query(sql, (err, results) => {
+        if(err) return next(err);
+
+        res.json(results);
+    });
+
+   /*  
+    res.send(`Visualizzo il post ${id}`) */ 
+});
 
 router.post('/',(req,res)=>{
     res.send(`Creazione di un nuovo post`)

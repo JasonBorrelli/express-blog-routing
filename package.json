@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "serve": "node ./app.js",
+    "serve": "node --env-file=.env ./app.js",
     "watch": "node --watch --env-file=.env ./app.js"
   },
   "keywords": [],
