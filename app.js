@@ -3,6 +3,8 @@ const postsRouter = require('./routers/posts');
 const notFound = require('./middleware/notFound');
 const errorHandler = require('./middleware/errorHendler');
 
+
+
 const app = express();                         // creo l'istanza dell'app Express
 const port = 3000;                             // definisco la porta su cui il server ascolterà
 
