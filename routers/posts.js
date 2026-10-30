@@ -33,8 +33,7 @@ router.get('/:id',(req,res,next)=>{
             return;
         }
             
-
-        res.json(results);
+        res.json(results[0]);
     });
 
    /*  
@@ -55,9 +54,26 @@ router.patch('/:id', (req,res)=>{
     res.send(`Aggiornamento parziale del post ${id}`)
 })
 
-router.delete('/:id',(req,res)=>{
+router.delete('/:id',(req,res, next)=>{
     const id = req.params.id;
-    res.send(`Eliminazione del post ${id}`)
+
+    const sql = `DELETE FROM posts WHERE id=?`;
+   
+
+    connection.query(sql, [id], (err, results) => {
+        if(err) return next(err);
+
+        if (results.length === 0) {
+            res.status(404).json({
+                error: 'post not found'
+            });
+            return;
+        }
+            
+        res.sendStatus(204);
+    });
+    
+  /*   res.send(`Eliminazione del post ${id}`) */
 })
 
 
