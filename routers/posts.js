@@ -5,7 +5,7 @@ const connection = require('../data/db');
 
 const router = express.Router();
 
-router.get('/',(req,res)=>{
+router.get('/',(req,res, next)=>{
     const sql = 'SELECT * FROM posts'
 
     connection.query(sql, (err, results)=> {
@@ -25,6 +25,11 @@ router.get('/:id',(req,res,next)=>{
 
     connection.query(sql, [id], (err, results) => {
         if(err) return next(err);
+
+        if (results.length === 0) 
+            res.status(404).json({
+                error: 'post not found'
+            })
 
         res.json(results);
     });
