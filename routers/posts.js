@@ -63,7 +63,7 @@ router.delete('/:id',(req,res, next)=>{
     connection.query(sql, [id], (err, results) => {
         if(err) return next(err);
 
-        if (results.length === 0) {
+        if (results.affectedRows === 0) {
             res.status(404).json({
                 error: 'post not found'
             });
