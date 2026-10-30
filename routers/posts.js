@@ -20,7 +20,7 @@ router.get('/',(req,res)=>{
 router.get('/:id',(req,res,next)=>{ 
 
     const id = req.params.id;
-    const sql = 'SELECT * FROM posts WHERE id=?';
+    const sql = `SELECT * FROM posts WHERE id=?`;
    
 
     connection.query(sql, [id], (err, results) => {
