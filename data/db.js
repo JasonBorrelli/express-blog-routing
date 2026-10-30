@@ -3,10 +3,10 @@ const mysql = require('mysql2');
 
 //SETUP CONNESSIONE
 const connection = mysql.createConnection({
-    host:'localhost',
-    user:'root',
-    password:'root',
-    database:'Blog',
+    host:'DB_LOCAL',
+    user:'DB_USER,
+    password:'DB_PASS',
+    database:'DB_NAME',
 });
 
 //AVVISO CONNESSIONE
